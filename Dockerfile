@@ -11,10 +11,14 @@ RUN curl https://packages.microsoft.com/config/debian/12/prod.list > /etc/apt/so
 RUN apt-get update -y
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql18 unixodbc-dev mssql-tools
 
-RUN echo "[el2]\n\
+ENV ODBC_DSN=el2 \
+    DB_SERVER=192.168.1.249 \
+    DB_DATABASE=FinApp
+
+RUN echo "[${ODBC_DSN}]\n\
 driver = ODBC Driver 18 for SQL Server\n\
-server = 192.168.1.249\n\
-database = FinApp" >> /etc/odbc.ini
+server = ${DB_SERVER}\n\
+database = ${DB_DATABASE}" > /etc/odbc.ini
 
 WORKDIR /app
 
