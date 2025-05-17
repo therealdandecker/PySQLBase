@@ -1,9 +1,7 @@
 import os
 from pathlib import Path
 import pyodbc
-from dotenv import load_dotenv
 
-load_dotenv()
 CONN_STRING = (
     os.getenv("CONNECTION_STRING")
     or os.getenv("PYODBC_CONN_STR")
@@ -49,4 +47,5 @@ if CONN_STRING and SQL_FILE.exists():
     cursor.close()
     conn.close()
 
+# Continue running container if needed
 os.execvp('python', ['python'])
