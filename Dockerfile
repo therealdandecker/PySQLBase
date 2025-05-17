@@ -29,15 +29,17 @@ RUN mkdir -p /etc/apt/keyrings && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Set working directory
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
+# Copy files into the container's /app folder
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY run_init_sql.py /app/run_init_sql.py
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
+COPY run_init_sql.py .
+COPY .env .
+COPY init.sql .   # optional — script handles if it exists
 
 EXPOSE 8000
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["python", "/app/run_init_sql.py"]
