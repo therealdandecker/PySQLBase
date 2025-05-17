@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+#Ignore license and readme
+/LICENSE export-ignore
+/README.md export-ignore
