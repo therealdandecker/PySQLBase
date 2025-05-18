@@ -6,7 +6,7 @@ Ideal for testing database connectivity, running queries, or bootstrapping SQL-r
 
 ---
 
-## 📦 Features
+## Features
 
 - Python 3.12 (based on `python:3.12-slim-bookworm`)
 - Microsoft ODBC Driver 18 for SQL Server
@@ -17,7 +17,7 @@ Ideal for testing database connectivity, running queries, or bootstrapping SQL-r
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repo
 
@@ -56,7 +56,7 @@ docker run --rm --env-file .env python-sql-dev
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 The following environment variables are required at runtime:
 
@@ -73,9 +73,9 @@ The DSN is dynamically created inside `/etc/odbc.ini` based on the above.
 
 ---
 
-## 🧪 Sample Code
+## Sample Code
 
-The `entrypoint.py` script will auto-run at container start and apply any SQL from `init.sql` using the best available connection string:
+The `.py` script will auto-run at container start and apply any SQL from `init.sql` using the best available connection string:
 
 ```python
 import pyodbc
@@ -91,7 +91,7 @@ print(cursor.fetchone())
 
 ---
 
-## ✅ TODO
+## TODO
 
 - Add support for connection encryption and trust cert options
 - Add `devcontainer.json` for VS Code remote development
@@ -99,6 +99,6 @@ print(cursor.fetchone())
 
 ---
 
-## 📄 License
+## License
 
 MIT
